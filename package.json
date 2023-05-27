@@ -6,7 +6,10 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "start": "node build/server.js",
-    "build": "tsup src --out-dir build"
+    "build": "tsup src --out-dir build",
+    "migration": "prisma migrate dev",
+    "studio": "prisma studio",
+    "generate": "prisma generate"
   },
   "keywords": [],
   "author": "",
@@ -15,11 +18,13 @@
     "@rocketseat/eslint-config": "1.2.0",
     "@types/node": "20.2.5",
     "eslint": "8.41.0",
+    "prisma": "4.14.1",
     "tsup": "6.7.0",
     "tsx": "3.12.7",
     "typescript": "5.0.4"
   },
   "dependencies": {
+    "@prisma/client": "4.14.1",
     "dotenv": "16.0.3",
     "fastify": "4.17.0",
     "zod": "3.21.4"
