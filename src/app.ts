@@ -17,7 +17,7 @@ app.setErrorHandler((error, _request, reply) => {
   if (env.NODE_ENV !== "production") {
     console.error(error);
   } else {
-    // enviar para uma tecnologia externa
+    // enviar para uma tecnologia externa como datadog
   }
 
   return reply.status(500).send({ message: "Internal server error." });
