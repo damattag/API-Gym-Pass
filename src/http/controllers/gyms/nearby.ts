@@ -4,7 +4,7 @@ import { makeFetchNearbyGymsUseCase } from "@/use-cases/factories/make-fetch-nea
 import { FastifyRequest, FastifyReply } from "fastify";
 
 export async function nearby(request: FastifyRequest, reply: FastifyReply) {
-  const { latitude, longitude } = request.body as NearbyGymQueryInput;
+  const { latitude, longitude } = request.query as NearbyGymQueryInput;
 
   const fetchNearbyGymUseCase = makeFetchNearbyGymsUseCase();
 

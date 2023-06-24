@@ -5,7 +5,7 @@ import { makeSearchGymsUseCase } from "@/use-cases/factories/make-search-gyms-us
 import { FastifyRequest, FastifyReply } from "fastify";
 
 export async function search(request: FastifyRequest, reply: FastifyReply) {
-  const { query, page } = request.body as SearchGymQueryInput;
+  const { query, page } = request.query as SearchGymQueryInput;
 
   const searchGymUseCase = makeSearchGymsUseCase();
 
