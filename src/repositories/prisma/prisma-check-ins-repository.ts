@@ -30,14 +30,11 @@ export class PrismaCheckInsRepository implements CheckInsRepository {
       where: {
         user_id: userId,
       },
-      orderBy: {
-        created_at: "asc",
-      },
-      take: 20,
       skip: (page - 1) * 20,
-    });
+      take: 20,
+    })
 
-    return checkIns;
+    return checkIns
   }
 
   async countByUserId(userId: string) {
