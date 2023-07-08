@@ -20,8 +20,6 @@ export class ValidateCheckInUseCase {
   }: ValidateCheckInUseCaseRequest): Promise<ValidateCheckInUseCaseResponse> {
     const checkIn = await this.checkInsRepository.findById(checkInId);
 
-    console.log('CCCCCCCCCCCCCCCCCCCCCCCCCCCC', checkInId);
-
     if (!checkIn) {
       throw new ResourceNotFoundError();
     }
