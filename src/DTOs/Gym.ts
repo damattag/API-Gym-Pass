@@ -60,25 +60,7 @@ const SearchGymQuery = z.object({
     .default(1),
 });
 
-const NearbyGymQuery = z.object({
-  latitude: z
-    .coerce
-    .number()
-    .refine(value => {
-      return Math.abs(value) <= 90;
-    }
-    ),
-  longitude: z
-    .coerce
-    .number()
-    .refine(value => {
-      return Math.abs(value) <= 180;
-    }
-    )
-});
-
   
 export type CreateGymInput = z.infer<typeof CreateGym>;
 export type UpdateGymInput = z.infer<typeof UpdateGym>;
 export type SearchGymQueryInput = z.infer<typeof SearchGymQuery>;
-export type NearbyGymQueryInput = z.infer<typeof NearbyGymQuery>;
