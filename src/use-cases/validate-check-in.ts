@@ -20,11 +20,11 @@ export class ValidateCheckInUseCase {
   }: ValidateCheckInUseCaseRequest): Promise<ValidateCheckInUseCaseResponse> {
     const checkIn = await this.checkInsRepository.findById(checkInId);
 
+    console.log('CCCCCCCCCCCCCCCCCCCCCCCCCCCC', checkInId);
+
     if (!checkIn) {
       throw new ResourceNotFoundError();
     }
-
-    console.log(checkIn);
 
     const distanceInMinutesFromCheckInCreation = dayjs(new Date()).diff(
       checkIn.created_at,
@@ -34,11 +34,11 @@ export class ValidateCheckInUseCase {
     if (distanceInMinutesFromCheckInCreation > 20) {
       throw new LateCheckInValidationError();
     }
-
+    
     checkIn.validated_at = new Date();
-
+    
     await this.checkInsRepository.save(checkIn);
-
+    
     return {
       checkIn,
     };

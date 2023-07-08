@@ -19,13 +19,6 @@ const CreateCheckInParams = z.object({
     .uuid(),
 });
 
-const ValidateCheckInParams = z.object({
-  checkInId: z
-    .string()
-    .uuid(),
-});
-
   
 export type CreateCheckInInput = z.infer<typeof CreateCheckIn>;
 export type CreateCheckInParamsInput = z.infer<typeof CreateCheckInParams>;
-export type ValidateCheckInParamsInput = z.infer<typeof ValidateCheckInParams>;

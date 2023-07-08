@@ -1,18 +1,21 @@
-import { CreateCheckInInput, CreateCheckInParamsInput, ValidateCheckInParamsInput } from "@/DTOs/CheckIns";
-import { makeCheckInsUseCase } from "@/use-cases/factories/make-check-in-use-case";
 import { makeValidateCheckInUseCase } from "@/use-cases/factories/make-validate-check-in-use-case";
 
 import { FastifyRequest, FastifyReply } from "fastify";
+import { z } from "zod";
 
 export async function validate(request: FastifyRequest, reply: FastifyReply) {
-  const { checkInId } = request.params as ValidateCheckInParamsInput;
+  const validateCheckInParamsSchema = z.object({
+    checkInId: z.string().uuid(),
+  })
 
-  const validateCheckinUseCase = makeValidateCheckInUseCase();
+  const { checkInId } = validateCheckInParamsSchema.parse(request.params)
 
-  await validateCheckinUseCase.execute({ 
-    checkInId,
-   });
   
-
+  const validateCheckinUseCase = makeValidateCheckInUseCase();
+  
+  await validateCheckinUseCase.execute({
+    checkInId,
+  });
+  
   return reply.status(204).send("Check-in validado com sucesso!");
 }
