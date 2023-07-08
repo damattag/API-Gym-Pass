@@ -3,6 +3,7 @@ import { app } from '@/app'
 import { afterAll, beforeAll, describe, expect, it } from 'vitest'
 import { createAndAuthenticateUser } from '@/utils/test/create-and-authenticate-user'
 import { prisma } from '@/lib/prisma'
+import console from 'console'
 
 describe('Check-in History (e2e)', () => {
   beforeAll(async () => {
@@ -43,6 +44,8 @@ describe('Check-in History (e2e)', () => {
       .get('/check-ins/history')
       .set('Authorization', `Bearer ${token}`)
       .send()
+    
+    console.log('AAAAAAAAAAAAAAAAAAAAA', response.body)
 
     expect(response.statusCode).toEqual(200)
     expect(response.body.checkIns).toEqual([

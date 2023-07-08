@@ -24,6 +24,8 @@ export class ValidateCheckInUseCase {
       throw new ResourceNotFoundError();
     }
 
+    console.log(checkIn);
+
     const distanceInMinutesFromCheckInCreation = dayjs(new Date()).diff(
       checkIn.created_at,
       "minute"
